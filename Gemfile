@@ -16,11 +16,11 @@ gem "uglifier", ">= 1.3.0"
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
+  gem "factory_bot_rails"
   gem "rspec-rails", "~> 3.7"
 end
 
 group :test do
-  gem "factory_bot", "~> 4.0"
   gem "shoulda-matchers", "~> 3.1"
 end
 
