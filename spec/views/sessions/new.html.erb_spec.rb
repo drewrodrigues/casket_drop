@@ -24,4 +24,12 @@ RSpec.describe "sessions/new", type: :view do
 
     expect(rendered).to have_button("Login")
   end
+
+  it "shows errors" do
+    @error = "Something goes here"
+
+    render
+
+    expect(rendered).to have_text("Something goes here")
+  end
 end

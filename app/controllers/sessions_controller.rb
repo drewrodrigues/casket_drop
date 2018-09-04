@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
       login(user)
       redirect_to (user.admin ? admin_path : dashboard_path)
     else
+      @error = "There was a problem with your login."
       render :new
     end
   end

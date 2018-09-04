@@ -1,4 +1,8 @@
-<h2>Session#new</h2>
+<h2>Login</h2>
+
+<% if @error %>
+  <li><%= @error %></li>
+<% end %>
 
 <%= form_tag login_path do %>
   <%= email_field_tag :email %>
