@@ -28,4 +28,22 @@ RSpec.describe "users/new", type: :view do
 
     expect(rendered).to have_button("Sign Up")
   end
+
+  it "displays full messages from error hash" do
+    allow(@user).to receive_message_chain(:errors, :full_messages) { ["No email error", "Another error"] }
+
+    render
+
+    expect(rendered).to have_text("No email error")
+  end
+
+  context "when email attribute present on @user" do
+    it "automatically inserts email" do
+      allow(@user).to receive(:email) { "email@example.com" }
+
+      render
+
+      expect(rendered).to have_field("user_email", with: "email@example.com")
+    end
+  end
 end

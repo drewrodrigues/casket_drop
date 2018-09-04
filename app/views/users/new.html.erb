@@ -1,5 +1,12 @@
-<h2>User#new</h2>
-<%= form_for @user do |f| %>
+<h2>Get Started</h2>
+
+<ul>
+  <% @user.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+</ul>
+
+<%= form_for @user, url: get_started_path do |f| %>
   <%= f.text_field :email %>
   <%= f.password_field :password %>
   <%= f.submit "Sign Up" %>
