@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :redirect_if_logged_in, only: %i[new create]
+  before_action :redirect_if_email_used, only: %i[create]
   before_action :require_login!, except: %i[new create index]
   before_action :require_admin!, only: :index
   before_action :set_user, only: %i[show edit update destroy]
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.email = params[:email]
   end
 
   def create
@@ -55,5 +57,10 @@ class UsersController < ApplicationController
 
   def can_edit_resource
     params[:id].to_i == current_user.id || admin?
+  end
+
+  def redirect_if_email_used
+    # TODO: test this in controller spec (& pass email over)
+    redirect_to login_path(user_params[:email]) if User.find_by_email(user_params[:email])
   end
 end
