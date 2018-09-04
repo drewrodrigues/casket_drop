@@ -270,10 +270,11 @@ RSpec.describe UsersController, type: :controller do
           user = create(:user)
           valid_attributes[:email] = "newEmail@gexample.com"
 
-          [admin, user].each do |account|
+          [admin, user].each_with_index do |account, i|
+            valid_attributes[:email] = i.to_s + valid_attributes[:email]
             put :update, params: { id: account, user: valid_attributes }
 
-            expect(account.reload.email).to eq("newEmail@gexample.com")
+            expect(account.reload.email).to eq(valid_attributes[:email])
           end
         end
 
@@ -281,7 +282,8 @@ RSpec.describe UsersController, type: :controller do
           admin = login_admin
           user = create(:user)
 
-          [admin, user].each do |account|
+          [admin, user].each_with_index do |account, i|
+            valid_attributes[:email] = i.to_s + valid_attributes[:email]
             put :update, params: { id: account, user: valid_attributes }
 
             expect(response).to redirect_to account
