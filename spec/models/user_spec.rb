@@ -4,39 +4,45 @@ RSpec.describe User, type: :model do
   let!(:user) { create(:user) }
 
   it { is_expected.to validate_presence_of :email }
+  it { is_expected.to validate_uniqueness_of(:email).ignoring_case_sensitivity }
   it { is_expected.to validate_presence_of :password }
+  it { is_expected.to validate_length_of(:password).is_at_least(8) }
 
   it "has a valid factory" do
     expect(create(:user)).to be_truthy
   end
 
-  it "hashes password before save" do
-    user.password = "something"
-    user.save
-    user.reload
+  describe "admin" do
+    it "sets admin to false by default" do
+      user = User.new
 
-    expect(BCrypt::Password.valid_hash?(user.password)).to be_truthy
-  end
+      expect(user.admin).to eq(false)
+    end
 
-  it "doesn't rehash password if already hashed" do
-    password_hash_before = user.password
-    user.save
-    user.reload
+    it "accepts true and false" do
+      [true, false].each do |val|
+        user.admin = val
 
-    expect(user.password).to eq(password_hash_before)
-  end
-
-  it "doesn't allow invalid emails" do
-    %w[invalid another #@%#$@#.com <email@domain.com>].each do |invalid_email|
-      user.email = invalid_email
-      expect(user.save).to eq(false)
+        expect(user.save).to eq(true)
+      end
     end
   end
 
-  it "allows valid emails" do
-    %w[valid_email@example.com firstname.las@domn.com].each do |valid_email|
-      user.email = valid_email
-      expect(user.save).to eq(true)
+  describe "password" do
+    it "hashes password before save" do
+      user.password = "something"
+      user.save
+      user.reload
+
+      expect(BCrypt::Password.valid_hash?(user.password)).to be_truthy
+    end
+
+    it "doesn't rehash password if already hashed" do
+      password_hash_before = user.password
+      user.save
+      user.reload
+
+      expect(user.password).to eq(password_hash_before)
     end
   end
 
