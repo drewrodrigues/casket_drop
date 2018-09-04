@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   # GET
   def landing
     if current_user
-      redirect_to (admin? ? admin_path : dashboard_path) 
+      redirect_to (admin? ? admin_path : dashboard_path)
     end
   end
 
@@ -15,6 +15,5 @@ class PagesController < ApplicationController
   end
 
   # GET /admin
-  def admin
-  end
+  def admin; end
 end

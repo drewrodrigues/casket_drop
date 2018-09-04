@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe PagesController, type: :controller do
   describe "GET landing" do
@@ -76,17 +76,17 @@ RSpec.describe PagesController, type: :controller do
       it "raises routing error" do
         login_user
 
-        expect {
+        expect do
           get :admin
-        }.to raise_error(ActionController::RoutingError)
+        end.to raise_error(ActionController::RoutingError)
       end
     end
 
     context "when guest" do
       it "raises routing error" do
-        expect {
+        expect do
           get :admin
-        }.to raise_error(ActionController::RoutingError)
+        end.to raise_error(ActionController::RoutingError)
       end
     end
   end
