@@ -1,11 +1,19 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=59595464824b051a3e3e9ede1a43fc3edd7d54672a3e77e160546f1af5779554
 language: ruby
 rvm:
  - 2.4.1
 before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
   - psql -c 'create database threadBox_test' -U postgres
 script:
   - bundle exec rake db:setup
   - bundle exec rake spec
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 services:
   - postgresql
 addons:
