@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe "layouts/_navbar", type: :view do
-
   context "admin" do
     before do
       expect(view).to receive(:admin?) { true }
@@ -80,7 +79,7 @@ RSpec.describe "layouts/_navbar", type: :view do
     it "has a 'Get Started' link" do
       render
 
-      expect(rendered).to have_link("Get Started", href: new_user_path)
+      expect(rendered).to have_link("Get Started", href: get_started_path)
     end
   end
 end
