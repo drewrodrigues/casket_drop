@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :users
 
+  root "pages#landing"
   get "dashboard" => "pages#dashboard"
   get "admin" => "pages#admin"
 
