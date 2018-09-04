@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :redirect_if_logged_in, only: %i[new create]
-  before_action :require_user!, except: %i[new create index]
-  before_action :require_admin!, only: [:index]
+  before_action :require_login!, except: %i[new create index]
+  before_action :require_admin!, only: :index
   before_action :set_user, only: %i[show edit update destroy]
 
   def index
@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      login(@user)
       redirect_to subscribe_path
     else
       render :new
@@ -47,24 +48,12 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :password)
   end
 
-  def redirect_if_logged_in
-    if admin?
-      redirect_to admin_path
-    elsif user?
-      redirect_to dashboard_path
-    end
-  end
-
   def set_user
-    raise ActionController::RoutingError.new("Page not found") if params[:id].to_i != current_user.id && !admin?
+    raise ActionController::RoutingError.new("Page not found") unless can_edit_resource
     @user = User.find(params[:id])
   end
 
-  def require_user!
-    redirect_to login_path unless user?
-  end
-
-  def require_admin!
-    raise ActionController::RoutingError.new("Page not found") unless admin?
+  def can_edit_resource
+    params[:id].to_i == current_user.id || admin?
   end
 end

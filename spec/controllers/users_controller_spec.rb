@@ -185,6 +185,12 @@ RSpec.describe UsersController, type: :controller do
           post :create, params: { user: valid_attributes }
         end.to change { User.count }.by 1
       end
+
+      it "sets the session" do
+        post :create, params: { user: valid_attributes }
+
+        expect(controller.current_user).to be_truthy
+      end
     end
   end
 
@@ -374,11 +380,11 @@ RSpec.describe UsersController, type: :controller do
         end
 
         it "clears the user session" do
-          user = login_user 
+          user = login_user
 
           delete :destroy, params: { id: user }
 
-          expect(controller.user?).to eq false
+          expect(controller.current_user).to eq false
         end
 
         it "decrements User.count" do
