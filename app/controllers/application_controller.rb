@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include ApplicationHelper
+
   def login(user)
     session[:user] = user
   end
@@ -7,15 +9,19 @@ class ApplicationController < ActionController::Base
     session.delete :user
   end
 
-  def user?
-    !!session[:user]
+  def redirect_if_logged_in
+    if admin?
+      redirect_to admin_path
+    elsif user?
+      redirect_to dashboard_path
+    end
   end
 
-  def admin?
-    session[:user] && session[:user][:admin]
+  def require_login!
+    redirect_to login_path unless user?
   end
 
-  def current_user
-    @current_user || User.find(session[:user][:id])
+  def require_admin!
+    raise ActionController::RoutingError.new("Page not found") unless admin?
   end
 end
