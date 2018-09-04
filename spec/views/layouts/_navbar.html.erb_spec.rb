@@ -1,16 +1,17 @@
 require "rails_helper"
 
 RSpec.describe "layouts/_navbar", type: :view do
-  it "has a 'Thread Box' link to" do
-    render
-
-    expect(rendered).to have_link("Thread Box", href: root_path)
-  end
 
   context "admin" do
     before do
       expect(view).to receive(:admin?) { true }
       expect(view).to receive(:current_user) { true }
+    end
+
+    it "has a 'Thread Box' link to admin" do
+      render
+
+      expect(rendered).to have_link("Thread Box", href: admin_path)
     end
 
     it "has a 'Admin' link" do
@@ -38,6 +39,12 @@ RSpec.describe "layouts/_navbar", type: :view do
       expect(view).to receive(:current_user) { true }
     end
 
+    it "has a 'Thread Box' link to dashboard" do
+      render
+
+      expect(rendered).to have_link("Thread Box", href: dashboard_path)
+    end
+
     it "has a 'Dashboard' link" do
       render
 
@@ -58,6 +65,12 @@ RSpec.describe "layouts/_navbar", type: :view do
   end
 
   context "guest" do
+    it "has a 'Thread Box' link to landing" do
+      render
+
+      expect(rendered).to have_link("Thread Box", href: root_path)
+    end
+
     it "has a 'Login' link" do
       render
 
