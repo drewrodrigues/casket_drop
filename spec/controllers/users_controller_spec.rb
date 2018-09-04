@@ -49,20 +49,28 @@ RSpec.describe UsersController, type: :controller do
 
   describe "GET show" do
     context "when admin" do
-      it "renders the template" do
-        admin = login_admin
+      context "and their id or another user id is passed" do
+        it "renders the template" do
+          admin = login_admin
+          user = create(:user)
 
-        get :show, params: { id: admin }
+          [admin, user].each do |account|
+            get :show, params: { id: account }
 
-        expect(response).to render_template(:show)
-      end
+            expect(response).to render_template(:show)
+          end
+        end
 
-      it "assigns @user" do
-        admin = login_admin
+        it "assigns @user" do
+          admin = login_admin
+          user = create(:user)
 
-        get :show, params: { id: admin }
+          [admin, user].each do |account|
+            get :show, params: { id: account }
 
-        expect(assigns(:user)).to eq(admin)
+            expect(assigns(:user)).to eq(account)
+          end
+        end
       end
     end
 
@@ -182,43 +190,27 @@ RSpec.describe UsersController, type: :controller do
 
   describe "GET edit" do
     context "when admin" do
-      context "and their id is passed" do
+      context "and their id or another user id is passed" do
         it "renders the template" do
           admin = login_admin
+          user = create(:user)
 
-          get :edit, params: { id: admin }
+          [admin, user].each do |account|
+            get :edit, params: { id: account }
 
-          expect(response).to render_template(:edit)
+            expect(response).to render_template(:edit)
+          end
         end
 
         it "assigns @user" do
           admin = login_admin
+          user = create(:user)
 
-          get :edit, params: { id: admin }
+          [admin, user].each do |account|
+            get :edit, params: { id: account }
 
-          expect(assigns(:user)).to eq(admin)
-        end
-      end
-
-      context "and another user id is passed" do
-        it "renders the template" do
-          admin = create(:user, admin: true)
-          another_user = create(:user)
-          controller.login(admin)
-
-          get :edit, params: { id: another_user }
-
-          expect(response).to render_template(:edit)
-        end
-
-        it "assigns @user" do
-          admin = create(:user, admin: true)
-          another_user = create(:user)
-          controller.login(admin)
-
-          get :edit, params: { id: another_user }
-
-          expect(assigns(:user)).to eq(another_user)
+            expect(assigns(:user)).to eq(account)
+          end
         end
       end
     end
@@ -266,43 +258,28 @@ RSpec.describe UsersController, type: :controller do
 
   describe "PUT update"  do
     context "when admin" do
-      context "and their id is passed" do
+      context "and their id or another user id is passed" do
         it "updates the record" do
           admin = login_admin
+          user = create(:user)
           valid_attributes[:email] = "newEmail@gexample.com"
 
-          put :update, params: { id: admin, user: valid_attributes }
+          [admin, user].each do |account|
+            put :update, params: { id: account, user: valid_attributes }
 
-          expect(admin.reload.email).to eq("newEmail@gexample.com")
+            expect(account.reload.email).to eq("newEmail@gexample.com")
+          end
         end
 
         it "renders the show template" do
           admin = login_admin
+          user = create(:user)
 
-          put :update, params: { id: admin, user: valid_attributes }
+          [admin, user].each do |account|
+            put :update, params: { id: account, user: valid_attributes }
 
-          expect(response).to redirect_to admin
-        end
-      end
-
-      context "and another user id is passed" do
-        it "updates the record" do
-          login_admin
-          another_user = create(:user)
-          valid_attributes[:email] = "newEmail@gexample.com"
-
-          put :update, params: { id: another_user, user: valid_attributes }
-
-          expect(another_user.reload.email).to eq("newEmail@gexample.com")
-        end
-
-        it "renders the show template" do
-          login_admin
-          another_user = create(:user)
-
-          put :update, params: { id: another_user, user: valid_attributes }
-
-          expect(response).to redirect_to another_user
+            expect(response).to redirect_to account
+          end
         end
       end
     end
@@ -350,58 +327,38 @@ RSpec.describe UsersController, type: :controller do
 
   describe "DELETE destroy" do
     context "when admin" do
-      context "and their id is passed" do
+      context "and their id or another user id is passed" do
         it "redirects to login" do
           admin = login_admin
+          user = create(:user)
 
-          delete :destroy, params: { id: admin }
+          [user, admin].each do |account|
+            delete :destroy, params: { id: account }
 
-          expect(response).to redirect_to(login_path)
+            expect(response).to redirect_to(login_path)
+          end
         end
 
         it "clears the user session" do
           admin = login_admin
+          user = create(:user)
 
-          delete :destroy, params: { id: admin }
+          [admin, user].each do |account|
+            delete :destroy, params: { id: account }
 
-          expect(controller.user?).to eq(false)
+            expect(controller.user?).to eq(false)
+          end
         end
 
         it "decrements User.count" do
           admin = login_admin
+          user = create(:user)
 
-          expect do
-            delete :destroy, params: { id: admin }
-          end.to change { User.count }.by(-1)
-        end
-      end
-
-      context "and another user id is passed" do
-        it "redirects to login" do
-          login_admin
-          another_user = create(:user)
-
-          delete :destroy, params: { id: another_user }
-
-          expect(response).to redirect_to(login_path)
-        end
-
-        it "clears the user session" do
-          login_admin
-          another_user = create(:user)
-
-          delete :destroy, params: { id: another_user }
-
-          expect(controller.user?).to eq(false)
-        end
-
-        it "decrements User.count" do
-          login_admin
-          another_user = create(:user)
-
-          expect do
-            delete :destroy, params: { id: another_user }
-          end.to change { User.count }.by(-1)
+          [user, admin].each do |account|
+            expect do
+              delete :destroy, params: { id: account }
+            end.to change { User.count }.by(-1)
+          end
         end
       end
     end
@@ -417,8 +374,7 @@ RSpec.describe UsersController, type: :controller do
         end
 
         it "clears the user session" do
-          user = create :user
-          controller.login user
+          user = login_user 
 
           delete :destroy, params: { id: user }
 

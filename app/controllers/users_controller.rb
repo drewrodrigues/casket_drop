@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :redirect_if_logged_in, only: [:new, :create]
+  before_action :redirect_if_logged_in, only: %i[new create]
   before_action :require_user!, except: %i[new create index]
   before_action :require_admin!, only: [:index]
   before_action :set_user, only: %i[show edit update destroy]
@@ -34,8 +34,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    deleting_self = (@user == current_user)
     if @user.destroy
-      logout
+      logout if deleting_self
       redirect_to login_path
     end
   end
