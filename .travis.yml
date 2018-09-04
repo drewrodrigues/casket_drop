@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+ - 2.4.1
+before_script:
+  - psql -c 'create database threadBox_test' -U postgres
+script:
+  - bundle exec rake db:setup
+  - bundle exec rake spec
+services:
+  - postgresql
+addons:
+  postgresql
