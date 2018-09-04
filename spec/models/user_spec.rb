@@ -26,6 +26,20 @@ RSpec.describe User, type: :model do
     expect(user.password).to eq(password_hash_before)
   end
 
+  it "doesn't allow invalid emails" do
+    %w[invalid another #@%#$@#.com <email@domain.com>].each do |invalid_email|
+      user.email = invalid_email
+      expect(user.save).to eq(false)
+    end
+  end
+
+  it "allows valid emails" do
+    %w[valid_email@example.com firstname.las@domn.com].each do |valid_email|
+      user.email = valid_email
+      expect(user.save).to eq(true)
+    end
+  end
+
   describe "#authenticate" do
     context "when password correct" do
       it "returns true" do

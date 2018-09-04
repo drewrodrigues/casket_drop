@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   before_save :hash_password
 
-  validates :email, presence: true
+  validates :email, presence: true, email: { strict: true }
   validates :password, presence: true
 
   def authenticate(password)
