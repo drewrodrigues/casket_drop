@@ -1,5 +1,17 @@
 require "bcrypt"
 
+# address          string
+# admin            boolean             null(false)
+# bottom_fit       string
+# city             string
+# email            string              null(false)
+# password         string              null(false)
+# shoe_size        float
+# state            string
+# style            string
+# top_size         string
+# waist_size       integer
+
 class User < ApplicationRecord
   include BCrypt
 
@@ -7,7 +19,9 @@ class User < ApplicationRecord
   before_save :hash_password
 
   validates :admin, inclusion: { in: [true, false] }
-  validates :email, email: { strict: true }, presence: true, uniqueness: { case_sensitive: false }
+  validates :email, email: { strict: true },
+                    presence: true,
+                    uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 8 }, presence: true
 
   def authenticate(password)

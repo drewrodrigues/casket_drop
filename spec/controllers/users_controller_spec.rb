@@ -1,13 +1,7 @@
 require "rails_helper"
 
 RSpec.describe UsersController, type: :controller do
-  let(:valid_attributes) do
-    {
-      email: "valid_email@example.com",
-      password: "password",
-      admin: false,
-    }
-  end
+  let(:valid_attributes) { build(:user).attributes }
 
   describe "GET index" do
     context "when admin" do
@@ -268,13 +262,13 @@ RSpec.describe UsersController, type: :controller do
         it "updates the record" do
           admin = login_admin
           user = create(:user)
-          valid_attributes[:email] = "newEmail@gexample.com"
+          valid_attributes["email"] = "newEmail@gexample.com"
 
           [admin, user].each_with_index do |account, i|
-            valid_attributes[:email] = i.to_s + valid_attributes[:email]
+            valid_attributes["email"] = i.to_s + valid_attributes["email"]
             put :update, params: { id: account, user: valid_attributes }
 
-            expect(account.reload.email).to eq(valid_attributes[:email])
+            expect(account.reload.email).to eq(valid_attributes["email"])
           end
         end
 
@@ -283,7 +277,7 @@ RSpec.describe UsersController, type: :controller do
           user = create(:user)
 
           [admin, user].each_with_index do |account, i|
-            valid_attributes[:email] = i.to_s + valid_attributes[:email]
+            valid_attributes["email"] = i.to_s + valid_attributes["email"]
             put :update, params: { id: account, user: valid_attributes }
 
             expect(response).to redirect_to account
@@ -296,7 +290,7 @@ RSpec.describe UsersController, type: :controller do
       context "and their id is passed" do
         it "updates the record" do
           user = login_user
-          valid_attributes[:email] = "newEmail@gexample.com"
+          valid_attributes["email"] = "newEmail@gexample.com"
 
           put :update, params: { id: user, user: valid_attributes }
 
