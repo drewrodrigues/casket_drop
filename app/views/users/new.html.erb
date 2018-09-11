@@ -7,7 +7,35 @@
 </ul>
 
 <%= form_for @user, url: get_started_path do |f| %>
-  <%= f.text_field :email %>
-  <%= f.password_field :password %>
+
+  <%= f.label :shoe_size, "Shoe Size" %>
+  <%= f.select :shoe_size, shoe_size_options %>
+
+  <%= f.label :bottom_fit, "Bottom Fit" %>
+  <%= f.select :bottom_fit, bottom_fit_options %>
+
+  <%= f.label :style, "Style" %>
+  <%= f.select :style, style_options %>
+
+  <%= f.label :top_size, "Top Size" %>
+  <%= f.select :top_size, top_size_options%>
+
+  <%= f.label :waist_size, "Waist Size" %>
+  <%= f.select :waist_size, waist_size_options %>
+
+  <%= f.label :first_name, "First Name" %>
+  <%= f.text_field :first_name, placeholder: "First Name" %>
+
+  <%= f.label :last_name, "Last Name" %>
+  <%= f.text_field :last_name, placeholder: "Last Name" %>
+
+
+  <%= f.label :email, "Email" %>
+  <%= f.text_field :email, placeholder: "Email Address" %>
+
+
+  <%= f.label :password, "Password" %>
+  <%= f.password_field :password, placeholder: "Password" %>
+
   <%= f.submit "Sign Up" %>
 <% end %>
