@@ -1,12 +1,15 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
-  let!(:user) { create(:user) }
+  let(:user) { create(:user) }
 
   it { is_expected.to validate_presence_of :email }
-  it { is_expected.to validate_uniqueness_of(:email).ignoring_case_sensitivity }
   it { is_expected.to validate_presence_of :password }
   it { is_expected.to validate_length_of(:password).is_at_least(8) }
+
+  it "validates uniqueness of email" do
+    expect(user).to validate_uniqueness_of(:email).ignoring_case_sensitivity
+  end
 
   it "has a valid factory" do
     expect(create(:user)).to be_truthy

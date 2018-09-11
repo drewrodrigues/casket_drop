@@ -19,10 +19,14 @@ class User < ApplicationRecord
   before_save :hash_password
 
   validates :admin, inclusion: { in: [true, false] }
-  validates :email, email: { strict: true },
-                    presence: true,
+  validates :bottom_fit, inclusion: %w(Skinny Straight Relaxed)
+  validates :email, email: { strict: true }, presence: true,
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 8 }, presence: true
+  validates :shoe_size, inclusion: [7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5]
+  validates :style, inclusion: %w(Athletic Casual Formal Hipster Street)
+  validates :top_size, inclusion: %w(SM MD LG XL)
+  validates :waist_size, inclusion: { in: 28..40 }
 
   def authenticate(password)
     unhashed_password == password
