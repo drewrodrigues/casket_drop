@@ -13,6 +13,7 @@ gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 3.11"
 gem "rails", "~> 5.2.1"
 gem "sass-rails", "~> 5.0"
+gem "stripe"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 
@@ -29,6 +30,7 @@ group :test do
   gem "selenium-webdriver"
   gem "shoulda-matchers", "~> 3.1"
   gem "simplecov", require: false
+  gem 'stripe-ruby-mock', '~> 2.5.4', :require => 'stripe_mock'
 end
 
 group :development do
