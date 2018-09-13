@@ -25,6 +25,8 @@ end
 group :test do
   gem "capybara", ">= 2.15"
   gem "chromedriver-helper"
+  gem "cucumber-rails", require: false
+  gem "database_cleaner"
   gem "factory_bot_rails"
   gem "rails-controller-testing"
   gem "selenium-webdriver"
