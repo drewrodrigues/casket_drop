@@ -7,10 +7,8 @@ require "bcrypt"
 # current_period_end         date
 # email                      string              null(false)
 # password                   string              null(false)
-# shoe_size                  float
 # state                      string
 # stripe_id                  string
-# style                      string
 # subscribed                 boolean
 # top_size                   string
 # waist_size                 integer
@@ -27,8 +25,6 @@ class User < ApplicationRecord
   validates :email, email: { strict: true }, presence: true,
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 8 }, presence: true
-  validates :shoe_size, inclusion: [7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5]
-  validates :style, inclusion: %w(Athletic Casual Formal Hipster Street)
   validates :top_size, inclusion: %w(SM MD LG XL)
   validates :waist_size, inclusion: { in: 28..40 }
 
