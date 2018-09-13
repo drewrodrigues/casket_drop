@@ -1,16 +1,18 @@
 require "bcrypt"
 
-# address          string
-# admin            boolean             null(false)
-# bottom_fit       string
-# city             string
-# email            string              null(false)
-# password         string              null(false)
-# shoe_size        float
-# state            string
-# style            string
-# top_size         string
-# waist_size       integer
+# address                    string
+# admin                      boolean             null(false)
+# bottom_fit                 string
+# city                       string
+# current_period_end         date
+# email                      string              null(false)
+# password                   string              null(false)
+# shoe_size                  float
+# state                      string
+# stripe_id                  string
+# style                      string
+# top_size                   string
+# waist_size                 integer
 
 class User < ApplicationRecord
   include BCrypt
