@@ -11,6 +11,7 @@ require "bcrypt"
 # state                      string
 # stripe_id                  string
 # style                      string
+# subscribed                 boolean
 # top_size                   string
 # waist_size                 integer
 
