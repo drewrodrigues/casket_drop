@@ -20,7 +20,7 @@ RSpec.configure do |config|
   config.include Helpers
   config.before(:each) do
     StripeMock.start
-    StripeMock.create_test_helper.create_plan(id: ENV["THREAD_BOX_PLAN_ID"], amount: 4999)
+    StripeMock.create_test_helper.create_plan(id: "starter", amount: 4999)
   end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

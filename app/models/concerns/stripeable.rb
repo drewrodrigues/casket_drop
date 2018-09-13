@@ -20,7 +20,7 @@ module Stripeable
     return if subscribed?
     sub = Stripe::Subscription.create(
       customer: stripe_id,
-      items: [{ plan: ENV["THREAD_BOX_PLAN_ID"] }],
+      items: [{ plan: "starter" }],
     )
     set_current_period_end(sub.current_period_end)
   end

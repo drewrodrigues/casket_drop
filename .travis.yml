@@ -18,3 +18,5 @@ services:
   - postgresql
 addons:
   postgresql
+env:
+  - THREAD_BOX_STRIPE_PUB_KEY=anything
