@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe SubscriptionsController, type: :controller do
   describe "GET new" do
@@ -45,10 +45,10 @@ RSpec.describe SubscriptionsController, type: :controller do
         valid_attributes = {
           address: "Random Address",
           state: "CA",
-          city: "Santa Rosa"
+          city: "Santa Rosa",
         }
 
-        post :create, params: { user: valid_attributes, stripeToken: card_token  } 
+        post :create, params: { user: valid_attributes, stripeToken: card_token }
 
         expect(response).to redirect_to(dashboard_path)
       end

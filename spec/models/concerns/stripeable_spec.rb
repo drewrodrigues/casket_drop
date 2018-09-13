@@ -16,7 +16,7 @@ RSpec.describe Stripeable do
 
       it "sets the user's stripe_id" do
         user = create(:user)
-        
+
         user.subscribe(card_token)
 
         expect(user.reload.stripe_id).to_not be_nil
@@ -25,12 +25,12 @@ RSpec.describe Stripeable do
       it "sets the user's current_period_end out a month" do
         Timecop.freeze(Date.today)
         user = create(:user)
-        
+
         user.subscribe(card_token)
 
-        expect(user.reload.current_period_end).to eq(Date.today + 31)
+        expect(user.reload.current_period_end).to eq(Date.today + 30)
       end
-      
+
       it "sets subscribed to true" do
         user = create(:user)
 
@@ -45,9 +45,9 @@ RSpec.describe Stripeable do
         user = create(:user)
         user.subscribe(card_token)
 
-        expect {
+        expect do
           user.subscribe(card_token)
-        }.to_not change(user, :stripe_id)
+        end.to_not change(user, :stripe_id)
       end
 
       it "doesn't double subscribe the user" do
@@ -66,9 +66,9 @@ RSpec.describe Stripeable do
         user.subscribe(card_token)
         Timecop.freeze(Date.today + 2)
 
-        expect {
+        expect do
           user.subscribe(card_token)
-        }.to_not change(user, :current_period_end)
+        end.to_not change(user, :current_period_end)
       end
     end
   end

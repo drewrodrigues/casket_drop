@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "subscriptions/new", type: :view do
   before do
@@ -7,7 +7,7 @@ RSpec.describe "subscriptions/new", type: :view do
 
   it "has a form" do
     render
-    
+
     expect(rendered).to have_selector("form")
   end
 
