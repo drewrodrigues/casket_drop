@@ -17,6 +17,7 @@ require "bcrypt"
 
 class User < ApplicationRecord
   include BCrypt
+  include Stripeable
 
   after_initialize :set_defaults
   before_save :hash_password
