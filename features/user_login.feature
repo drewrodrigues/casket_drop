@@ -5,7 +5,7 @@ Feature: User login
 
   Scenario: User logs in
     Given I am a registered user
-    Given I am on the login page
+    And I am on the login page
     When I fill out the form with my email and password
     And I click login
     Then I should see the dashboard page
