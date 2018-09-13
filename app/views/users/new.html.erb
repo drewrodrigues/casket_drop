@@ -8,20 +8,14 @@
 
 <%= form_for @user, url: get_started_path do |f| %>
 
-  <%= f.label :shoe_size, "Shoe Size" %>
-  <%= f.select :shoe_size, shoe_size_options %>
-
   <%= f.label :bottom_fit, "Bottom Fit" %>
-  <%= f.select :bottom_fit, bottom_fit_options %>
-
-  <%= f.label :style, "Style" %>
-  <%= f.select :style, style_options %>
+  <%= f.select :bottom_fit, bottom_fit_options, disabled: bottom_fit_options[0], selected: bottom_fit_options[0] %>
 
   <%= f.label :top_size, "Top Size" %>
-  <%= f.select :top_size, top_size_options%>
+  <%= f.select :top_size, top_size_options, disabled: top_size_options[0], selected: top_size_options[0] %>
 
   <%= f.label :waist_size, "Waist Size" %>
-  <%= f.select :waist_size, waist_size_options %>
+  <%= f.select :waist_size, waist_size_options, disabled: waist_size_options[0], selected: waist_size_options[0] %>
 
   <%= f.label :first_name, "First Name" %>
   <%= f.text_field :first_name, placeholder: "First Name" %>
