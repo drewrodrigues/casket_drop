@@ -35,7 +35,6 @@ When /^I click sign up$/ do
 end
 
 Then /^I should see the subscribe page$/ do
-  save_and_open_page
   expect(page).to have_button("Subscribe")
 end
 

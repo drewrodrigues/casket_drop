@@ -15,12 +15,36 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require "helpers"
 require "stripe_mock"
+require "database_cleaner"
 
 RSpec.configure do |config|
   config.include Helpers
   config.before(:each) do
     StripeMock.start
     StripeMock.create_test_helper.create_plan(id: "starter", amount: 4999)
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, type: :feature) do
+    driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
+
+    if driver_shares_db_connection_with_specs
+      DatabaseCleaner.strategy = :transaction
+    else
+      DatabaseCleaner.strategy = :truncation
+    end
   end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
