@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   delete "logout" => "sessions#destroy"
 
   get "subscribe" => "subscriptions#new"
+  post "subscribe" => "subscriptions#create"
 end
