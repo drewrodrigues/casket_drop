@@ -28,3 +28,4 @@
 
 *.swp
 coverage
+.DS_Store

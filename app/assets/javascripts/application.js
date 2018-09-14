@@ -11,6 +11,18 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+document.addEventListener("turbolinks:load", function() {
+  var grids = $('.landing-grid-1, .landing-grid-2, .landing-grid-3, .landing-grid-4');
+  grids
+    .on('mouseover', function(event) {
+      $(this).children('.landing-grid-mask').fadeIn(250);
+    })
+    .on('mouseleave', function() {
+      $(this).children('.landing-grid-mask').fadeOut(250);
+    });
+})
