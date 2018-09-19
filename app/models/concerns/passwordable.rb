@@ -6,7 +6,7 @@ module Passwordable
   def authenticate(password)
     unhashed_password == password
   end
-  
+
   private
 
   def hash_password

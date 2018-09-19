@@ -51,8 +51,8 @@ class UsersController < ApplicationController
       :last_name, :password,
       :shoe_size, :state, :style,
       :top_size, :waist_size,
-      :favorite_tops => [], :favorite_bottoms => [],
-      :favorite_colors => []
+      favorite_tops: [], favorite_bottoms: [],
+      favorite_colors: []
     )
   end
 

@@ -1,6 +1,6 @@
 # == Schema Info
 #
-# Table name: users 
+# Table name: users
 #
 # address                    string
 # admin                      boolean             not null
@@ -27,7 +27,7 @@ class User < ApplicationRecord
   before_save :hash_password
 
   validates :admin, inclusion: { in: [true, false] }
-  validates :bottom_fit, presence: { message: "must be selected" } 
+  validates :bottom_fit, presence: { message: "must be selected" }
   validates :email, email: { strict: true }, presence: true,
                     uniqueness: { case_sensitive: false }
   validate :favorites_selected
@@ -42,10 +42,10 @@ class User < ApplicationRecord
   end
 
   def favorites_selected
-    %i(favorite_bottoms favorite_colors favorite_tops).each {|c| selection?(c)}
+    %i(favorite_bottoms favorite_colors favorite_tops).each { |c| selection?(c) }
   end
 
   def selection?(column)
-    errors.add(column, "must be selected") unless self.send(column).uniq.length > 1
+    errors.add(column, "must be selected") unless send(column).uniq.length > 1
   end
 end

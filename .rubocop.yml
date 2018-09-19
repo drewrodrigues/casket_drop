@@ -652,3 +652,5 @@ Rails/Validation:
 Style/MixinUsage:
   Enabled: false
 
+Metrics/BlockLength:
+  Enabled: false

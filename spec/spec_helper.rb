@@ -40,11 +40,11 @@ RSpec.configure do |config|
   config.before(:each, type: :feature) do
     driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
 
-    if driver_shares_db_connection_with_specs
-      DatabaseCleaner.strategy = :transaction
-    else
-      DatabaseCleaner.strategy = :truncation
-    end
+    DatabaseCleaner.strategy = if driver_shares_db_connection_with_specs
+                                 :transaction
+                               else
+                                 :truncation
+                               end
   end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
