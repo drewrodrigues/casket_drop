@@ -1,0 +1,51 @@
+.get-started {
+  background-color: #222;
+  padding: 100px 0;
+  color: white;
+
+  .selection-title {
+    font-weight: 300;
+
+    span {
+      font-weight: 700;
+    }
+  }
+
+  img {
+    width: 100%;
+    border: 5px solid white;
+  }
+}
+
+.selection {
+  margin-bottom: 100px;
+}
+
+.selection-color {
+  padding: 5px 10px;
+  display: inline-block;
+  border-radius: 3px;
+  margin-left: 3px;
+  margin-right: 20px;
+  border: 1px solid red;
+  cursor: pointer;
+}
+
+$colors: blue red green white black orange yellow pink;
+
+@each $current-color in $colors {
+  .selection-color-#{$current_color} {
+    border-color: $current-color;
+    color: $current-color;
+  }
+}
+
+.top-size-radio {
+  margin-right: 30px;
+}
+
+.about-you {
+  .form-control {
+    margin-bottom: 20px;
+  }
+}
