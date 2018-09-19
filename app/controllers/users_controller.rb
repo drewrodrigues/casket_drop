@@ -50,7 +50,9 @@ class UsersController < ApplicationController
       :city, :email, :first_name,
       :last_name, :password,
       :shoe_size, :state, :style,
-      :top_size, :waist_size
+      :top_size, :waist_size,
+      :favorite_tops => [], :favorite_bottoms => [],
+      :favorite_colors => []
     )
   end
 

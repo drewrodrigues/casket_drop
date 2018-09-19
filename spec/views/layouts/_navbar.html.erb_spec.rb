@@ -7,10 +7,10 @@ RSpec.describe "layouts/_navbar", type: :view do
       expect(view).to receive(:current_user) { true }
     end
 
-    it "has a 'Thread Box' link to admin" do
+    it "has a 'CASKETDROP' link to admin" do
       render
 
-      expect(rendered).to have_link("Thread Box", href: admin_path)
+      expect(rendered).to have_link("CASKETDROP", href: admin_path)
     end
 
     it "has a 'Admin' link" do
@@ -38,10 +38,10 @@ RSpec.describe "layouts/_navbar", type: :view do
       expect(view).to receive(:current_user) { true }
     end
 
-    it "has a 'Thread Box' link to dashboard" do
+    it "has a 'CASKETDROP' link to dashboard" do
       render
 
-      expect(rendered).to have_link("Thread Box", href: dashboard_path)
+      expect(rendered).to have_link("CASKETDROP", href: dashboard_path)
     end
 
     it "has a 'Dashboard' link" do
@@ -64,10 +64,10 @@ RSpec.describe "layouts/_navbar", type: :view do
   end
 
   context "guest" do
-    it "has a 'Thread Box' link to landing" do
+    it "has a 'CASKETDROP' link to landing" do
       render
 
-      expect(rendered).to have_link("Thread Box", href: root_path)
+      expect(rendered).to have_link("CASKETDROP", href: root_path)
     end
 
     it "has a 'Login' link" do

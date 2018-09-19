@@ -8,6 +8,6 @@ module UsersHelper
   end
 
   def waist_size_options
-    ["Select your waist size"] + (28..40).to_a
+    ["Select your waist size"] + (28..36).to_a
   end
 end
