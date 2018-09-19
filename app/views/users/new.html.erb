@@ -15,32 +15,16 @@
       <div class="form-group selection">
         <h4 class="selection-title">Select your <span>favorite tops</span></h4>
 
-        <div class="row"><%# TODO: Implement %>
-          <div class="col-md-2 col-6">
-            <%= f.label :v_neck do %>
-              <%= image_tag "vneck.jpg" %>
-              <%= f.check_box :favorite_tops, { id: "user_v_neck", multiple: true }, "V Neck" %>
-              V Neck 
+        <div class="row">
+          <div class="col-md-3 col-4">
+            <%= f.label :collared do %>
+              <%= image_tag "collared.jpeg" %>
+              <%= f.check_box :favorite_tops, { id: "user_collared", multiple: true }, "Collared" %>
+              Collared
             <% end %>
           </div>
 
-          <div class="col-md-2 col-6">
-            <%= f.label :graphic do %>
-              <%= image_tag "graphic.jpg" %>
-              <%= f.check_box :favorite_tops, { id: "user_graphic", multiple: true }, "Graphic" %>
-              Graphic 
-            <% end %>
-          </div>
-
-          <div class="col-md-2 col-6">
-            <%= f.label :flannel do %>
-              <%= image_tag "flannel.jpg" %>
-              <%= f.check_box :favorite_tops, { id: "user_flannel", multiple: true }, "Flannel" %>
-              Flannel 
-            <% end %>
-          </div>
-
-          <div class="col-md-2 col-6">
+          <div class="col-md-3 col-4">
             <%= f.label :crew_neck do %>
               <%= image_tag "crewneck.jpg" %>
               <%= f.check_box :favorite_tops, { id: "user_crew_neck", multiple: true }, "Crew Neck" %>
@@ -48,19 +32,43 @@
             <% end %>
           </div>
 
-          <div class="col-md-2 col-6">
+          <div class="col-md-3 col-4">
+            <%= f.label :flannel do %>
+              <%= image_tag "flannel.jpg" %>
+              <%= f.check_box :favorite_tops, { id: "user_flannel", multiple: true }, "Flannel" %>
+              Flannel 
+            <% end %>
+          </div>
+
+          <div class="col-md-3 col-4">
+            <%= f.label :graphic do %>
+              <%= image_tag "graphic.jpg" %>
+              <%= f.check_box :favorite_tops, { id: "user_graphic", multiple: true }, "Graphic" %>
+              Graphic 
+            <% end %>
+          </div>
+
+          <div class="col-md-3 col-4">
             <%= f.label :long_sleeve do %>
-              <%= image_tag "longsleeve.jpeg" %>
+              <%= image_tag "longsleeve.jpg" %>
               <%= f.check_box :favorite_tops, { id: "user_long_sleeve", multiple: true }, "Long Sleeve" %>
               Long Sleeve 
             <% end %>
           </div>
 
-          <div class="col-md-2 col-6">
-            <%= f.label :collared do %>
-              <%= image_tag "collared.jpeg" %>
-              <%= f.check_box :favorite_tops, { id: "user_collared", multiple: true }, "Collared" %>
-              Collared
+          <div class="col-md-3 col-4">
+            <%= f.label :polo do %>
+              <%= image_tag "polo.jpg" %>
+              <%= f.check_box :favorite_tops, { id: "user_polo", multiple: true }, "Polo" %>
+              Polo 
+            <% end %>
+          </div>
+
+          <div class="col-md-3 col-4">
+            <%= f.label :v_neck do %>
+              <%= image_tag "vneck.jpg" %>
+              <%= f.check_box :favorite_tops, { id: "user_v_neck", multiple: true }, "V Neck" %>
+              V Neck 
             <% end %>
           </div>
         </div>
@@ -70,7 +78,7 @@
         <h4 class="selection-title">Select your <span>favorite bottoms</span></h4>
 
         <div class="row">
-          <div class="col-md-3 col-4">
+          <div class="col-md-3 col-6">
             <%= f.label :shorts do %>
               <%= image_tag "shorts.jpg" %>
               <%= f.check_box :favorite_bottoms, { id: "user_shorts", multiple: true }, "Shorts" %>
@@ -78,7 +86,7 @@
             <% end %>
           </div>
           
-          <div class="col-md-3 col-4">
+          <div class="col-md-3 col-6">
             <%= f.label :sweats do %>
               <%= image_tag "sweats.jpg" %>
               <%= f.check_box :favorite_bottoms, { id: "user_sweats", multiple: true }, "Sweats" %>
@@ -86,7 +94,7 @@
             <% end %>
           </div>
 
-          <div class="col-md-3 col-4">
+          <div class="col-md-3 col-6">
             <%= f.label :joggers do %>
               <%= image_tag "joggers.jpg" %>
               <%= f.check_box :favorite_bottoms, { id: "user_joggers", multiple: true }, "Joggers" %>
@@ -94,7 +102,7 @@
             <% end %>
           </div>
 
-          <div class="col-md-3 col-4">
+          <div class="col-md-3 col-6">
             <%= f.label :jeans do %>
               <%= image_tag "jeans.jpeg" %>
               <%= f.check_box :favorite_bottoms, { id: "user_jeans", multiple: true }, "Jeans" %>
@@ -134,32 +142,22 @@
         </div>
       </div>
 
-      <div class="form-group selection text-center"><%# TODO: Implement %>
+      <div class="form-group selection text-center">
         <h4 class="selection-title">Select your <span>favorite colors</span></h4>
 
         <%= f.label :blue do %>
           <%= f.check_box :favorite_colors, { id: "user_blue", multiple: true }, "Blue" %>
           <span class="selection-color selection-color-blue">Blue</span>
         <% end %>
-          
-        <%= f.label :red do %>
-          <%= f.check_box :favorite_colors, { id: "user_red", multiple: true }, "Red" %>
-          <span class="selection-color selection-color-red">Red</span>
-        <% end %>
-
-        <%= f.label :green do %>
-          <%= f.check_box :favorite_colors, { id: "user_green", multiple: true }, "Green" %>
-          <span class="selection-color selection-color-green">Green</span>
-        <% end %>
-
-        <%= f.label :white do %>
-          <%= f.check_box :favorite_colors, { id: "user_white", multiple: true }, "White" %>
-          <span class="selection-color selection-color-white">White</span>
-        <% end %>
 
         <%= f.label :black do %>
           <%= f.check_box :favorite_colors, { id: "user_black", multiple: true }, "Black" %>
           <span class="selection-color selection-color-black">Black</span>
+        <% end %>
+          
+        <%= f.label :green do %>
+          <%= f.check_box :favorite_colors, { id: "user_green", multiple: true }, "Green" %>
+          <span class="selection-color selection-color-green">Green</span>
         <% end %>
 
         <%= f.label :orange do %>
@@ -167,18 +165,28 @@
           <span class="selection-color selection-color-orange">Orange</span>
         <% end %>
 
+        <%= f.label :pink do %>
+          <%= f.check_box :favorite_colors, { id: "user_pink", multiple: true }, "Pink" %>
+          <span class="selection-color selection-color-pink">Pink</span>
+        <% end %>
+
+        <%= f.label :red do %>
+          <%= f.check_box :favorite_colors, { id: "user_red", multiple: true }, "Red" %>
+          <span class="selection-color selection-color-red">Red</span>
+        <% end %>
+
         <%= f.label :yellow do %>
           <%= f.check_box :favorite_colors, { id: "user_yellow", multiple: true }, "Yellow" %>
           <span class="selection-color selection-color-yellow">Yellow</span>
         <% end %>
 
-        <%= f.label :pink do %>
-          <%= f.check_box :favorite_colors, { id: "user_pink", multiple: true }, "Pink" %>
-          <span class="selection-color selection-color-pink">Pink</span>
+        <%= f.label :white do %>
+          <%= f.check_box :favorite_colors, { id: "user_white", multiple: true }, "White" %>
+          <span class="selection-color selection-color-white">White</span>
         <% end %>
       </div>
 
-      <div class="form-group">
+      <div class="form-group text-center">
         <div class="row">
           <div class="col-md-6 selection offset-md-3">
             <h4 class="selection-title">Select your <span>top size</span></h4>
