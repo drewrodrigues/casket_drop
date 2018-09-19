@@ -1,3 +1,5 @@
 @import "bootstrap";
-@import "partials/pages";
-@import "partials/get-started";
+@import "variables";
+@import "base";
+
+@import "partials/*";
