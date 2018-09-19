@@ -15,7 +15,7 @@
 # waist_size                 integer
 
 class User < ApplicationRecord
-  include BCrypt
+  include Passwordable
   include Stripeable
 
   after_initialize :set_defaults
@@ -32,12 +32,8 @@ class User < ApplicationRecord
 
   private
 
-  def hash_password
-    self.password = Password.create(password) unless password_already_hashed?
-  end
-
-  def unhashed_password
-    Password.new(password)
+  def set_defaults
+    self.admin ||= false
   end
 
   def favorites_selected
