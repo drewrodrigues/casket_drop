@@ -1,13 +1,18 @@
+# == Schema Info
+#
+# Table name: users 
+#
 # address                    string
-# admin                      boolean             null(false)
+# admin                      boolean             not null
 # bottom_fit                 string
 # city                       string
 # current_period_end         date
-# email                      string              null(false)
+# email                      string              not null
 # favorite_bottoms           [string]
 # favorite_colors            [string]
 # favorite_tops              [string]
-# password                   string              null(false)
+# id                         integer             not null, primary key
+# password                   string              not null
 # state                      string
 # stripe_id                  string
 # subscribed                 boolean
