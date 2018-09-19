@@ -35,7 +35,7 @@
   cursor: pointer;
 }
 
-$colors: blue red green white black orange yellow pink;
+$colors: "blue" "red" "green" "white" "black" "orange" "yellow" "pink";
 
 @each $current-color in $colors {
   .selection-color-#{$current_color} {
