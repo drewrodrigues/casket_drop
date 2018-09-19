@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_13_220144) do
+ActiveRecord::Schema.define(version: 2018_09_16_234040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,9 @@ ActiveRecord::Schema.define(version: 2018_09_13_220144) do
     t.string "stripe_id"
     t.date "current_period_end"
     t.boolean "subscribed"
+    t.string "favorite_tops", default: [], array: true
+    t.string "favorite_bottoms", default: [], array: true
+    t.string "favorite_colors", default: [], array: true
   end
 
 end
