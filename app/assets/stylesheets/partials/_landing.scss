@@ -1,5 +1,4 @@
 .landing-jumbo {
-  background-color: red;
   padding: 150px 0;
 }
 
@@ -37,8 +36,8 @@
 
   p {
     display: inline-block;
-    background-color: #222;
-    color: white;
+    background-color: $bg-dark;
+    color: $text-light;
     font-size: 24px;
     padding: 5px 20px;
     margin-bottom: 20px;
@@ -46,24 +45,24 @@
 }
 
 .landing-grid-logo {
-  background-color: white;
+  background-color: $bg-light;
   padding: 10px;
   display: inline-block;
-  font-weight: 700;
+  font-weight: $font-heavy;
   margin-bottom: 0;
 
   span {
-    font-weight: 300;
+    font-weight: $font-light;
   }
 }
 
 .landing-grid-content {
   position: absolute;
-  color: white;
+  color: $text-light;
   z-index: 2;
 
   h3 {
-    font-weight: 700;
+    font-weight: $font-heavy;
   }
 
   p {
@@ -111,7 +110,7 @@
 
 .feature {
   h4 {
-    font-weight: 700;
+    font-weight: $font-heavy;
   }
 
   img {
@@ -127,37 +126,37 @@
 
   .title {
     text-align: center;
-    font-weight: 300;
+    font-weight: $font-light;
 
     span {
-      font-weight: 700;
+      font-weight: $font-heavy;
     }
   }
 
   .subtitle {
     text-align: center;
     margin-bottom: 75px;
-    color: #ccc;
-    font-weight: 300;
+    color: $text-subtle;
+    font-weight: $font-light;
   }
 }
 
 .personalization {
-  background-color: #222;
+  background-color: $bg-dark; 
   padding-bottom: 50px;
 
   .title {
-    color: white;
+    color: $text-light;
   }
 
   .subtitle {
-    color: #666;
+    color: $text-subtle;
   }
 }
 
 .personalization-step {
   color: white;
-  font-weight: 300;
+  font-weight: $font-light;
   margin-bottom: 50px;
 
   img {
@@ -166,22 +165,20 @@
   }
 
   span {
-    font-weight: 700;
+    font-weight: $font-heavy;
   }
 
   h4 {
-    font-weight: 300;
+    font-weight: $font-light;
   }
 }
 
 .personalization-step-step {
-  color: #777;
-
+  color: $text-subtle; 
   text-align: center;
 }
 
 .personalization-step-detail {
-  font-weight: 300;
-
-  color: #777;
+  font-weight: $font-light;
+  color: $text-subtle;
 }
