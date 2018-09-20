@@ -17,10 +17,10 @@
 
         <div class="row">
           <div class="col-md-3 col-4">
-            <%= f.label :collared do %>
+            <%= f.label :button_down do %>
               <%= image_tag "collared.jpg" %>
-              <%= f.check_box :favorite_tops, { id: "user_collared", multiple: true }, "Collared" %>
-              Collared
+              <%= f.check_box :favorite_tops, { id: "user_button_down", multiple: true }, "Button Down" %>
+              Button Down 
             <% end %>
           </div>
 
@@ -61,6 +61,14 @@
               <%= image_tag "polo.jpg" %>
               <%= f.check_box :favorite_tops, { id: "user_polo", multiple: true }, "Polo" %>
               Polo 
+            <% end %>
+          </div>
+
+          <div class="col-md-3 col-4">
+            <%= f.label :tank_top do %>
+              <%= image_tag "tank.jpg" %>
+              <%= f.check_box :favorite_tops, { id: "user_tank_top", multiple: true }, "Tank Top" %>
+              Tank Top 
             <% end %>
           </div>
 
