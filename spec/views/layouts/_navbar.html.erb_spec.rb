@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe "layouts/_navbar", type: :view do
   context "admin" do
     before do
-      expect(view).to receive(:admin?) { true }
-      expect(view).to receive(:current_user) { true }
+      expect(view).to receive(:admin?).at_least(:once) { true }
+      expect(view).to receive(:current_user).at_least(:once) { true }
     end
 
     it "has a 'CASKETDROP' link to admin" do
@@ -34,8 +34,8 @@ RSpec.describe "layouts/_navbar", type: :view do
 
   context "user" do
     before do
-      expect(view).to receive(:user?) { true }
-      expect(view).to receive(:current_user) { true }
+      expect(view).to receive(:user?).at_least(:once) { true }
+      expect(view).to receive(:current_user).at_least(:once) { true }
     end
 
     it "has a 'CASKETDROP' link to dashboard" do
