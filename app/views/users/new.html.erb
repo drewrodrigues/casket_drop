@@ -87,18 +87,10 @@
 
         <div class="row">
           <div class="col-md-3 col-6">
-            <%= f.label :shorts do %>
-              <%= image_tag "shorts.jpg" %>
-              <%= f.check_box :favorite_bottoms, { id: "user_shorts", multiple: true }, "Shorts" %>
-              Shorts
-            <% end %>
-          </div>
-          
-          <div class="col-md-3 col-6">
-            <%= f.label :sweats do %>
-              <%= image_tag "sweats.jpg" %>
-              <%= f.check_box :favorite_bottoms, { id: "user_sweats", multiple: true }, "Sweats" %>
-              Sweats
+            <%= f.label :jeans do %>
+              <%= image_tag "jeans.jpg" %>
+              <%= f.check_box :favorite_bottoms, { id: "user_jeans", multiple: true }, "Jeans" %>
+              Jeans 
             <% end %>
           </div>
 
@@ -111,10 +103,18 @@
           </div>
 
           <div class="col-md-3 col-6">
-            <%= f.label :jeans do %>
-              <%= image_tag "jeans.jpg" %>
-              <%= f.check_box :favorite_bottoms, { id: "user_jeans", multiple: true }, "Jeans" %>
-              Jeans 
+            <%= f.label :shorts do %>
+              <%= image_tag "shorts.jpg" %>
+              <%= f.check_box :favorite_bottoms, { id: "user_shorts", multiple: true }, "Shorts" %>
+              Shorts
+            <% end %>
+          </div>
+          
+          <div class="col-md-3 col-6">
+            <%= f.label :sweats do %>
+              <%= image_tag "sweats.jpg" %>
+              <%= f.check_box :favorite_bottoms, { id: "user_sweats", multiple: true }, "Sweats" %>
+              Sweats
             <% end %>
           </div>
         </div>
