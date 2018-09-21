@@ -12,7 +12,11 @@ RSpec.describe User, type: :model do
   end
 
   it "has a valid factory" do
-    expect(create(:user)).to be_truthy
+    expect(build(:user)).to be_truthy
+  end
+
+  it "has many orders" do
+    expect(build(:user).respond_to?(:orders)).to be true
   end
 
   describe "admin" do

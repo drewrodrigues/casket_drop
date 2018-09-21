@@ -26,6 +26,8 @@ class User < ApplicationRecord
   after_initialize :set_defaults
   before_save :hash_password
 
+  has_many :orders
+
   validates :admin, inclusion: { in: [true, false] }
   validates :bottom_fit, presence: { message: "must be selected" }
   validates :email, email: { strict: true }, presence: true,

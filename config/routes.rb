@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :orders
   resources :users, except: %i[new create]
   get "get-started(/:email)" => "users#new", as: "get_started"
   post "get-started" => "users#create"
