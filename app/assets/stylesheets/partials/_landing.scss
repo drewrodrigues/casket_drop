@@ -1,5 +1,22 @@
 .landing-jumbo {
-  padding: 150px 0;
+  width: 100%;
+  height: 100vh;
+  background-image: image-url("jumbo.jpg");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+}
+
+.landing-jumbo-logo { 
+  padding-top: 250px;
+  font-weight: $font-heavy;
+  font-size: 120px;
+  font-family: 'East Sea Dokdo', cursive;
+
+  span {
+    font-weight: $font-light;
+    display: inline-block;
+  }
 }
 
 .landing-grid-1,
@@ -32,13 +49,13 @@
   text-align: center;
   position: absolute;
   z-index: 5;
-  bottom: -58px;
+  top: 0;
 
   p {
     display: inline-block;
     background-color: $bg-dark;
     color: $text-light;
-    font-size: 24px;
+    font-size: 18px;
     padding: 5px 20px;
     margin-bottom: 20px;
   }
@@ -73,19 +90,19 @@
 .landing-grid-1 {
     background-image: image-url("1.jpg");
 
-  .landing-grid-content {
-    top: 20px;
-    left: 20px;
-  }
+    .landing-grid-content {
+      top: 20px;
+      left: 20px;
+    }
 }
 
 .landing-grid-2 {
   background-image: image-url("2.jpg");
-  text-align: right;
-  
+
   .landing-grid-content {
-    top: 20px;
     right: 20px;
+    top: 20px;
+    text-align: right;
   }
 }
 
@@ -100,12 +117,29 @@
 
 .landing-grid-4 {
   background-image: image-url("4.jpg");
-  text-align: right;
 
   .landing-grid-content {
     bottom: 20px;
     right: 20px;
+    text-align: right;
   }
+}
+
+.grid-detail {
+  padding: 75px 20px;
+}
+
+.grid-detail-title {
+  font-weight: $font-heavy;
+}
+
+.grid-detail-light {
+}
+
+.grid-detail-content {
+  max-width: 500px;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .feature {
