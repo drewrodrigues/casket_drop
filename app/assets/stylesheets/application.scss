@@ -3,3 +3,9 @@
 @import "base";
 
 @import "partials/*";
+
+.navbar-brand {
+  font-family: 'East Sea Dokdo', cursive;
+  font-weight: $font-heavy;
+  font-size: 24px;
+}
