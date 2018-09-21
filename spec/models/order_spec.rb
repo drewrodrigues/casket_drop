@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Order, type: :model do
   it "has a valid factory" do
@@ -6,7 +6,7 @@ RSpec.describe Order, type: :model do
   end
 
   it "belongs to a user" do
-    expect(build(:order).respond_to?(:user)).to be true 
+    expect(build(:order).respond_to?(:user)).to be true
   end
 
   describe "status" do
@@ -14,7 +14,7 @@ RSpec.describe Order, type: :model do
       order = build(:order)
 
       %i(new attention complete).each do |status|
-        order.status = status 
+        order.status = status
         expect(order).to be_valid
       end
     end

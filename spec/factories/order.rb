@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :order do
     user
-    status "new" 
+    status "new"
   end
 end
-

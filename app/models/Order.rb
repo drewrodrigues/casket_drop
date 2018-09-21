@@ -11,7 +11,8 @@ class Order < ApplicationRecord
 
   after_initialize :set_defaults
 
-  validates :status, presence: true, inclusion: { in: ["new", "attention", "complete"] }
+  validates :status, presence: true,
+                     inclusion: { in: ["new", "attention", "complete"] }
 
   private
 

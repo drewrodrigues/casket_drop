@@ -29,3 +29,5 @@
 *.swp
 coverage
 .DS_Store
+.swo
+*.swo
