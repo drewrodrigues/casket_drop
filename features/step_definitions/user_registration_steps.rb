@@ -2,16 +2,31 @@ Given /^I am on the get started page$/ do
   visit get_started_path
 end
 
+When /^I select my favorite tops$/ do
+  check "Crew Neck"
+  check "Button Down"
+end
+
+When /^I select my favorite bottoms$/ do
+  check "Shorts"
+  check "Jeans"
+end
+
 When /^I select my bottom fit$/ do
-  select "Straight", from: "Bottom Fit"
+  choose "Straight"
+end
+
+When /^I select my favorite colors$/ do
+  check "Black"
+  check "White"
 end
 
 When /^I select my top size$/ do
-  select "MD", from: "Top Size"
+  choose "Medium"
 end
 
 When /^I select my waist size$/ do
-  select "30", from: "Waist Size"
+  select "30", from: "user_waist_size"
 end
 
 When /^I fill in my first name$/ do
@@ -47,6 +62,10 @@ Then /^I should see error messages$/ do
   expect(page).to have_content("Email can't be blank")
   expect(page).to have_content("Password is too short")
   expect(page).to have_content("Password can't be blank")
-  expect(page).to have_content("Top size is not")
-  expect(page).to have_content("Waist size is not")
+  expect(page).to have_content("Bottom fit must be selected")
+  expect(page).to have_content("Favorite bottoms must be selected")
+  expect(page).to have_content("Favorite colors must be selected")
+  expect(page).to have_content("Favorite tops must be selected")
+  expect(page).to have_content("Top size must be selected")
+  expect(page).to have_content("Waist size must be selected")
 end

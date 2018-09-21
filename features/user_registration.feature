@@ -5,7 +5,10 @@ Feature: User registration
 
   Scenario: User signs up
     Given I am on the get started page
-    When I select my bottom fit
+    When I select my favorite tops
+    And I select my favorite bottoms
+    And I select my bottom fit
+    And I select my favorite colors
     And I select my top size
     And I select my waist size
     And I fill in my first name
