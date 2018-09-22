@@ -1,7 +1,5 @@
 .get-started {
-  background-color: $bg-dark;
   padding: 100px 0;
-  color: $text-light;
 
   .selection-title {
     text-align: center;
@@ -9,15 +7,15 @@
 
     span {
       font-weight: $font-heavy;
-      border-bottom: 2px dashed white;
+      border-bottom: 2px dashed $text-dark;
       padding-bottom: 2px;
     }
   }
 
   img {
     width: 100%;
-    border: 5px solid white;
     transition: border 0.5s;
+    box-shadow: 0 0 5px rgba(0,0,0, 0.4);
   }
 }
 
@@ -40,7 +38,7 @@ img.selected {
   cursor: pointer;
 }
 
-$colors: (blue: #4799B7, red: #C10202, green: #03A63C, white: #fff, black: #000, orange: #F86D20, yellow: #FAD956, pink: #F459FF);
+$colors: (blue: #4799B7, red: #C10202, green: #03A63C, white: #bbb, black: #000, orange: #F86D20, yellow: #FAD956, pink: #F459FF);
 
 @each $color_name, $hex in $colors {
   .selection-color-#{$color_name} {
