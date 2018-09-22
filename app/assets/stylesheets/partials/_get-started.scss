@@ -21,6 +21,10 @@
   }
 }
 
+.get-started-error {
+  display: inline-block;
+}
+
 .selection {
   margin-bottom: 100px;
 
@@ -42,18 +46,25 @@ img.selected {
   border-radius: 3px;
   margin-left: 3px;
   margin-right: 20px;
-  border: 1px solid red;
+  color: $text-subtle;
   cursor: pointer;
+  transition: all 0.5s;
 }
 
 $colors: (blue: #4799B7, red: #C10202, green: #03A63C, white: #bbb, black: #000, orange: #F86D20, yellow: #FAD956, pink: #F459FF);
 
-@each $color_name, $hex in $colors {
-  .selection-color-#{$color_name} {
-    border-color: $hex;
-    color: $hex;
+.selection-colors input:checked + span {
+  transition: all 0.5s;
+  transform: scale(1.15);
+  color: white;
+
+  @each $color_name, $hex in $colors {
+    &.selection-color-#{$color_name} {
+      background-color: $hex;
+    }
   }
 }
+
 
 .top-size-radio {
   margin-right: 30px;
