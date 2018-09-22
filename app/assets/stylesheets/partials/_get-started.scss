@@ -17,11 +17,17 @@
   img {
     width: 100%;
     border: 5px solid white;
+    transition: border 0.5s;
   }
 }
 
 .selection {
   margin-bottom: 100px;
+}
+
+img.selected {
+  border: 5px solid #4799b7;
+  transition: border 0.5s;
 }
 
 .selection-color {

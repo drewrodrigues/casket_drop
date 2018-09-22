@@ -26,4 +26,12 @@ document.addEventListener("turbolinks:load", function() {
     .on('mouseleave', function() {
       $(this).children('.landing-grid-mask').fadeOut(200);
     });
+
+  // Get-Started
+  // # TODO: cleanup 
+  var labels = $(".selection label");
+  labels.on('change', function() {
+    $("input:checked:visible").siblings("img").addClass("selected");
+    $("input:not(:checked):visible").siblings("img").removeClass("selected");
+  });
 })
