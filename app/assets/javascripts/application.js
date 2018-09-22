@@ -29,6 +29,10 @@ document.addEventListener("turbolinks:load", function() {
 
   // Get-Started
   // # TODO: cleanup 
+  // run it right away to make sure the view is correct
+  $("input:checked:visible").siblings("img").addClass("selected");
+  $("input:not(:checked):visible").siblings("img").removeClass("selected");
+
   var labels = $(".selection label");
   labels.on('change', function() {
     $("input:checked:visible").siblings("img").addClass("selected");

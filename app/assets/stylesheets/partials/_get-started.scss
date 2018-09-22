@@ -14,18 +14,26 @@
 
   img {
     width: 100%;
-    transition: border 0.5s;
+    transition: all 0.5s;
     box-shadow: 0 0 5px rgba(0,0,0, 0.4);
+    border: 5px solid #eee;
+    margin-bottom: 10px;
   }
 }
 
 .selection {
   margin-bottom: 100px;
+
+  label {
+    margin-bottom: 20px;
+  }
 }
 
 img.selected {
   border: 5px solid #4799b7;
-  transition: border 0.5s;
+  transition: all 0.5s;
+  box-shadow: 0 0 7px rgba(0,0,0, 0.5);
+  transform: scale(1.05);
 }
 
 .selection-color {

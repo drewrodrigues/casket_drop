@@ -18,7 +18,7 @@ RSpec.describe OrdersController, type: :controller do
     get :edit, params: { id: order }
     expect(response).to redirect_to(login_path)
 
-    put :update, params: { id: order}
+    put :update, params: { id: order }
     expect(response).to redirect_to(login_path)
 
     delete :destroy, params: { id: order }
@@ -26,7 +26,7 @@ RSpec.describe OrdersController, type: :controller do
   end
 
   it "raises routing error on user on all actions" do
-    login_user 
+    login_user
 
     expect do
       get :index
@@ -50,9 +50,9 @@ RSpec.describe OrdersController, type: :controller do
     end.to raise_error ActionController::RoutingError
 
     expect do
-      put :update, params: { id: order}
+      put :update, params: { id: order }
     end.to raise_error ActionController::RoutingError
-    
+
     expect do
       delete :destroy, params: { id: order }
     end.to raise_error ActionController::RoutingError
@@ -69,7 +69,7 @@ RSpec.describe OrdersController, type: :controller do
 
         expect(assigns(:orders)).to eq(Order.all)
       end
-      
+
       it "renders the index tempate" do
         get :index
 
@@ -80,7 +80,7 @@ RSpec.describe OrdersController, type: :controller do
     describe "GET show" do
       it "assigns @order" do
         order = create(:order)
-        
+
         get :show, params: { id: order }
 
         expect(assigns(:order)).to eq(order)
@@ -107,7 +107,7 @@ RSpec.describe OrdersController, type: :controller do
 
       it "renders the new template" do
         get :new
-        
+
         expect(response).to render_template :new
       end
     end
@@ -152,7 +152,7 @@ RSpec.describe OrdersController, type: :controller do
 
         get :edit, params: { id: order }
 
-        expect(assigns(:order)).to eq(order) 
+        expect(assigns(:order)).to eq(order)
       end
 
       it "renders the edit template" do
