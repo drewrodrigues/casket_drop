@@ -4,11 +4,9 @@
     <h2>Get Started</h2>
     <hr>
 
-    <ul>
-      <% @user.errors.full_messages.each do |error| %>
-        <li><%= error %></li>
-      <% end %>
-    </ul>
+    <% @user.errors.full_messages.each do |error| %>
+      <p class="alert alert-danger get-started-error"><%= error %></p>
+    <% end %>
 
     <%= form_for @user, url: get_started_path do |f| %>
 
@@ -150,7 +148,7 @@
         </div>
       </div>
 
-      <div class="form-group selection text-center">
+      <div class="form-group selection text-center selection-colors">
         <h4 class="selection-title">Select your <span>favorite colors</span></h4>
 
         <%= f.label :blue do %>
